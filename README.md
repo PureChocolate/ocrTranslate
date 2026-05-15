@@ -226,9 +226,3 @@ ocrTranslate/
     ├── ocr.py              # Vision model text extraction
     └── translate.py        # Translation + furigana stripping
 ```
-
----
-
-## License
-
-MIT
