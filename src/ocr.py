@@ -13,6 +13,7 @@ from src.config import (
     VISION_MODEL,
     MAX_IMAGE_DIMENSION,
     REQUEST_TIMEOUT,
+    TEMPERATURE,
     OCR_SYSTEM_PROMPT,
     OCR_USER_PROMPT,
 )
@@ -62,6 +63,7 @@ def extract_text(
         "messages": _make_message(user_prompt, system_prompt, image_b64),
         "stream": False,
         "keep_alive": keep_alive,
+        "options": {"temperature": TEMPERATURE},
     }
 
     if verbose:

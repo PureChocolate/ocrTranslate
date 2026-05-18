@@ -1,0 +1,7 @@
+name: ocrtranslate
+command: python run.py images --batch
+env:
+  OLLAMA_HOST: http://host.docker.internal:11434
+volumes:
+  - ./images:/app/images
+  - ./outputs:/app/outputs

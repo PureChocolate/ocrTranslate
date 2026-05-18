@@ -26,10 +26,10 @@ API_TAGS: Final[str] = f"{OLLAMA_HOST.rstrip('/')}/api/tags"
 
 # ── OCR prompts ────────────────────────────────────────────────────────
 OCR_SYSTEM_PROMPT: Final[str] = (
-    "Extract text from manga pages. Output only the text."
+    "Extract text from images. Ignore furigana/ruby text. Output only the main text."
 )
 OCR_USER_PROMPT: Final[str] = (
-    "Extract all speech bubble text from this page. Output the text only."
+    "Extract all text from this page. Ignore any small furigana or ruby readings next to characters. Output only the main text."
 )
 OCR_BUBBLE_SYSTEM_PROMPT: Final[str] = ""
 OCR_BUBBLE_USER_PROMPT: Final[str] = (
@@ -41,15 +41,15 @@ OCR_BUBBLE_USER_PROMPT: Final[str] = (
 
 # ── Translation prompts ────────────────────────────────────────────────
 TRANSLATE_SYSTEM_PROMPT: Final[str] = (
-    "Translate Japanese manga dialogue to natural English."
+    "You are a translator. Output only the translation, nothing else."
 )
 TRANSLATE_USER_PROMPT_TEMPLATE: Final[str] = (
-    "Translate this manga text to English. Output only the translation.\n\n{text}"
+    "Translate this Japanese text to English. Output only the translation.\n\n{text}"
 )
 TRANSLATE_BATCH_SYSTEM_PROMPT: Final[str] = (
-    "Translate Japanese manga dialogue to natural English."
+    "You are a translator. Output only the translation, nothing else."
 )
 TRANSLATE_BATCH_USER_PROMPT: Final[str] = (
-    "Translate this manga chapter to English. "
+    "Translate these pages to English. "
     "Keep the === PAGE N === markers. Output only the translation.\n\n{text}"
 )

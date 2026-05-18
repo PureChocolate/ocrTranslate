@@ -119,12 +119,15 @@ def main():
         return _setup(args.model_vision, args.model_translate)
 
     # Translate-only mode
-    if args.translate_only:
+    if args.translate_only is not None:
+        text_input = args.translate_only
+        if text_input == "-":
+            text_input = sys.stdin.read()
         if not _check_ollama():
             sys.exit("ERROR: Ollama not running. Start: ollama serve")
         from src.translate import translate_text
         try:
-            result = translate_text(text=args.translate_only, model=args.model_translate, verbose=args.verbose)
+            result = translate_text(text=text_input, model=args.model_translate, verbose=args.verbose)
             print(f"TRANSLATION:\n{result}")
             if args.output:
                 Path(args.output).write_text(result, encoding="utf-8")
